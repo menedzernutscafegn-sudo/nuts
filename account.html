@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="NutsCafe — учебный сайт кафе в Новосибирске. Меню, демонстрационная доставка и личный кабинет.">
+        <meta name="theme-color" content="#171512">
+        <title>Личный кабинет — NutsCafe</title>
+        <link rel="icon" href="img/logo.png" type="image/png">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js" defer></script>
+    </head>
+    <body data-page="account">
+        <a href="#main" id="skip-link">К содержимому</a>
+        <header>
+            <a class="logo" href="index.html" aria-label="nutsCafe — главная">nutsCafe</a>
+            <button type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav" id="menu-toggle"></button>
+            <nav id="main-nav" aria-label="Основная навигация">
+                <a href="menu.html">Меню</a>
+                <a href="index.html#about">О кафе</a>
+                <a href="index.html#delivery">Доставка</a>
+                <a href="index.html#contacts">Контакты</a>
+            </nav>
+            <a href="account.html" aria-label="Личный кабинет" id="account-link">
+                <img src="img/user.svg" alt="" width="22" height="22" aria-hidden="true">
+                Личный кабинет
+            </a>
+            <a href="cart.html" aria-label="Корзина" id="cart-link">
+                <img src="img/bag.svg" alt="" width="22" height="22" aria-hidden="true">
+                Корзина
+                <p data-cart-count>0</p>
+            </a>
+        </header>
+        <main id="main" class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a>
+                /
+                Личный кабинет
+            </div>
+            <div class="heading">
+                <div>
+                    <p class="eyebrow">Ваша уютная страница</p>
+                    <h1>Здравствуйте, Алексей.</h1>
+                </div>
+                <a href="auth.html" data-logout>Выйти из деморежима ↗</a>
+            </div>
+            <p class="notice">Демонстрационный кабинет открыт для знакомства. Профиль, адреса и три заказа вымышлены. Изменения действуют до обновления страницы; данные не хранятся и не передаются между страницами.</p>
+            <nav aria-label="Разделы кабинета" id="account-nav">
+                <a href="#profile">Профиль ↘</a>
+                <a href="#addresses">Мои адреса ↘</a>
+                <a href="#orders">История заказов ↘</a>
+                <a href="menu.html">Заказать ещё ↗</a>
+            </nav>
+            <div class="grid">
+                <div id="profile" class="panel">
+                    <p class="eyebrow">01 / О вас</p>
+                    <h2>Личные данные</h2>
+                    <form id="profile-form" method="post" action="account.html" novalidate autocomplete="off" data-editable>
+                        <input id="profile-name" name="profile-name" type="text" required minlength="5" maxlength="100" readonly value="Примеров Алексей Сергеевич" aria-describedby="profile-name-error" aria-label="ФИО *" placeholder="ФИО *">
+                        <p id="profile-name-error" data-error-for="profile-name"></p>
+                        <input id="profile-phone" name="profile-phone" type="tel" required maxlength="25" readonly value="+7 (900) 000-00-00" aria-describedby="profile-phone-error" aria-label="Телефон *" placeholder="Телефон *">
+                        <p id="profile-phone-error" data-error-for="profile-phone"></p>
+                        <input id="profile-email" name="profile-email" type="email" required maxlength="100" readonly value="alexey@example.com" aria-describedby="profile-email-error" aria-label="Электронная почта *" placeholder="Электронная почта *">
+                        <p id="profile-email-error" data-error-for="profile-email"></p>
+                        <p>В деморежиме с 1 ноября 2026</p>
+                        <p role="status" data-edit-message></p>
+                        <div class="actions">
+                            <button class="button" type="button" data-edit>Редактировать ↗</button>
+                            <button class="button" type="submit" hidden>Применить</button>
+                            <button type="button" data-cancel hidden>Отмена</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="addresses" class="panel">
+                    <p class="eyebrow">02 / Точки уюта</p>
+                    <h2>Мои адреса</h2>
+                    <form id="address-form" method="post" action="account.html" novalidate autocomplete="off" data-editable>
+                        <input id="address-main" name="address-main" type="text" required minlength="10" maxlength="200" readonly value="Новосибирск, ул. Примерная, 12, кв. 34" aria-describedby="address-main-error" aria-label="Основной адрес *" placeholder="Основной адрес *">
+                        <p id="address-main-error" data-error-for="address-main"></p>
+                        <input id="address-extra" name="address-extra" type="text" maxlength="200" readonly value="Новосибирск, ул. Учебная, 7, офис 2" aria-describedby="address-extra-error" aria-label="Дополнительный адрес" placeholder="Дополнительный адрес">
+                        <p id="address-extra-error" data-error-for="address-extra"></p>
+                        <p>Адреса вымышлены. Их можно изменить только в текущем просмотре.</p>
+                        <p role="status" data-edit-message></p>
+                        <div class="actions">
+                            <button class="button" type="button" data-edit>Изменить адреса ↗</button>
+                            <button class="button" type="submit" hidden>Применить</button>
+                            <button type="button" data-cancel hidden>Отмена</button>
+                        </div>
+                    </form>
+                    <div id="account-menu-prompt">
+                        <p>Следующая вкусная история<br>начинается с меню.</p>
+                        <a href="menu.html">Выбрать любимое ↗</a>
+                    </div>
+                </div>
+            </div>
+            <div id="orders">
+                <div class="heading">
+                    <div>
+                        <p class="eyebrow">03 / Маленькие вкусные истории</p>
+                        <h2>Ваши заказы</h2>
+                    </div>
+                    3 демонстрационных заказа
+                </div>
+                <div class="order">
+                    <div class="heading">
+                        <div>
+                            <p class="eyebrow">Сегодня · 15 ноября 2026</p>
+                            <h3>Заказ DEMO-103</h3>
+                        </div>
+                        <p>Готовится</p>
+                        <p>1 339 ₽</p>
+                    </div>
+                    <ol aria-label="Этапы доставки">
+                        <li data-complete>Принят</li>
+                        <li aria-current="step" data-complete>Готовится</li>
+                        <li>Передан курьеру</li>
+                        <li>Доставлен</li>
+                    </ol>
+                    <p>Шакшука × 1 · Завтрак с лососем × 1</p>
+                    <button type="button" data-order-toggle aria-expanded="false" aria-controls="order-details-1">Подробнее о заказе</button>
+                    <div id="order-details-1" hidden data-order-details>
+                        <p>Блюда: 1 140 ₽ · Доставка: 199 ₽</p>
+                        <p>Адрес: Новосибирск, ул. Примерная, 12, кв. 34</p>
+                        <p>Оплата: наличными курьеру</p>
+                        <p>Статус: готовится. Это фиксированный пример, отслеживание в реальном времени не выполняется.</p>
+                    </div>
+                </div>
+                <div class="order">
+                    <div class="heading">
+                        <div>
+                            <p class="eyebrow">10 ноября 2026</p>
+                            <h3>Заказ DEMO-102</h3>
+                        </div>
+                        <p>Передан курьеру</p>
+                        <p>1 679 ₽</p>
+                    </div>
+                    <ol aria-label="Этапы доставки">
+                        <li data-complete>Принят</li>
+                        <li data-complete>Готовится</li>
+                        <li aria-current="step" data-complete>Передан курьеру</li>
+                        <li>Доставлен</li>
+                    </ol>
+                    <p>Том ям с креветками × 2</p>
+                    <button type="button" data-order-toggle aria-expanded="false" aria-controls="order-details-2">Подробнее о заказе</button>
+                    <div id="order-details-2" hidden data-order-details>
+                        <p>Блюда: 1 380 ₽ · Доставка: 299 ₽</p>
+                        <p>Адрес: Новосибирск, ул. Учебная, 7, офис 2</p>
+                        <p>Оплата: картой курьеру</p>
+                        <p>Статус: передан курьеру. Это демонстрационная история, реального курьера нет.</p>
+                    </div>
+                </div>
+                <div class="order">
+                    <div class="heading">
+                        <div>
+                            <p class="eyebrow">3 ноября 2026</p>
+                            <h3>Заказ DEMO-101</h3>
+                        </div>
+                        <p>Доставлен</p>
+                        <p>1 379 ₽</p>
+                    </div>
+                    <ol aria-label="Этапы доставки">
+                        <li data-complete>Принят</li>
+                        <li data-complete>Готовится</li>
+                        <li data-complete>Передан курьеру</li>
+                        <li aria-current="step" data-complete>Доставлен</li>
+                    </ol>
+                    <p>Сырный чизкейк × 2 · Капучино × 2</p>
+                    <button type="button" data-order-toggle aria-expanded="false" aria-controls="order-details-3">Подробнее о заказе</button>
+                    <div id="order-details-3" hidden data-order-details>
+                        <p>Блюда: 1 180 ₽ · Доставка: 199 ₽</p>
+                        <p>Адрес: Новосибирск, ул. Примерная, 12, кв. 34</p>
+                        <p>Оплата: наличными курьеру</p>
+                        <p>Статус: доставлен. Заказ является вымышленным примером.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <select id="dish-library" hidden aria-label="Служебные сведения меню">
+            <option value="shakshuka" data-dish="shakshuka" data-price="490">Шакшука</option>
+            <option value="draniki" data-dish="draniki" data-price="390">Драники со сметаной</option>
+            <option value="salmon-breakfast" data-dish="salmon-breakfast" data-price="650">Завтрак с лососем</option>
+            <option value="meatballs" data-dish="meatballs" data-price="590">Митболы с картофельным пюре</option>
+            <option value="carbonara" data-dish="carbonara" data-price="550">Паста Карбонара</option>
+            <option value="caesar" data-dish="caesar" data-price="620">Цезарь с креветками</option>
+            <option value="chicken-bowl" data-dish="chicken-bowl" data-price="540">Боул с цыплёнком</option>
+            <option value="tom-yum" data-dish="tom-yum" data-price="690">Том ям с креветками</option>
+            <option value="borscht" data-dish="borscht" data-price="450">Борщ с говядиной</option>
+            <option value="cheesecake" data-dish="cheesecake" data-price="350">Сырный чизкейк</option>
+            <option value="cherry-pie" data-dish="cherry-pie" data-price="320">Вишнёвый пирог</option>
+            <option value="syrniki" data-dish="syrniki" data-price="430">Сырники с фундуком</option>
+            <option value="yogurt" data-dish="yogurt" data-price="360">Греческий йогурт с голубикой</option>
+            <option value="oatmeal" data-dish="oatmeal" data-price="310">Овсяная каша с ягодами</option>
+            <option value="waffle" data-dish="waffle" data-price="520">Вафля с беконом и скрэмблом</option>
+            <option value="cappuccino" data-dish="cappuccino" data-price="240">Капучино</option>
+        </select>
+        <footer>
+            <div class="container" id="footer-content">
+                <div>
+                    <a class="logo" href="index.html">nutsCafe</a>
+                    <p>Место для маленьких<br>удовольствий каждый день.</p>
+                </div>
+                <nav aria-label="Навигация в подвале">
+                    <a href="menu.html">Наше меню</a>
+                    <a href="index.html#delivery">Доставка</a>
+                    <a href="account.html">Личный кабинет</a>
+                </nav>
+                <div>
+                    <p class="eyebrow">Заглядывайте в гости</p>
+                    <p>Новосибирск<br>ул. Кошурникова, 23/3</p>
+                    <a href="https://2gis.ru/novosibirsk/firm/70000001066368854" target="_blank" rel="noopener noreferrer">Показать в 2ГИС ↗</a>
+                </div>
+                <div>
+                    <p class="eyebrow">О проекте</p>
+                    <p>Учебный демонстрационный сайт.<br>Заказы не передаются в кафе.<br>Цены, составы и тарифы — примеры.</p>
+                </div>
+            </div>
+            <div class="container" id="footer-bottom">
+                <p>© 2026 NutsCafe · Учебный проект</p>
+                <p>Миндулин Евгений Александрович</p>
+                <a href="README.md">О демонстрации ↗</a>
+            </div>
+        </footer>
+        <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    </body>
+</html>

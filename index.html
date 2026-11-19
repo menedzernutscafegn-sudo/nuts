@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="NutsCafe — учебный сайт кафе в Новосибирске. Меню, демонстрационная доставка и личный кабинет.">
+        <meta name="theme-color" content="#171512">
+        <title>Кофе, завтраки и немного тепла — NutsCafe</title>
+        <link rel="icon" href="img/logo.png" type="image/png">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js" defer></script>
+    </head>
+    <body data-page="index">
+        <a href="#main" id="skip-link">К содержимому</a>
+        <header>
+            <a class="logo" href="index.html" aria-label="nutsCafe — главная">nutsCafe</a>
+            <button type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav" id="menu-toggle"></button>
+            <nav id="main-nav" aria-label="Основная навигация">
+                <a href="menu.html">Меню</a>
+                <a href="index.html#about">О кафе</a>
+                <a href="index.html#delivery">Доставка</a>
+                <a href="index.html#contacts">Контакты</a>
+            </nav>
+            <a href="account.html" aria-label="Личный кабинет" id="account-link">
+                <img src="img/user.svg" alt="" width="22" height="22" aria-hidden="true">
+                Личный кабинет
+            </a>
+            <a href="cart.html" aria-label="Корзина" id="cart-link">
+                <img src="img/bag.svg" alt="" width="22" height="22" aria-hidden="true">
+                Корзина
+                <p data-cart-count>0</p>
+            </a>
+        </header>
+        <main id="main">
+            <div class="container" aria-labelledby="hero-title" id="hero">
+                <div>
+                    <p class="eyebrow">Ваше маленькое место силы · Новосибирск</p>
+                    <h1 id="hero-title">Немного кофе.<br>Много тепла.</h1>
+                    <p>Завтраки без спешки, любимые блюда и кофе,<br> ради которого хочется сделать паузу.</p>
+                    <a class="button" href="menu.html">Посмотреть меню ↗</a>
+                    <div id="hero-footnote">
+                        <p>Хороший день начинается<br>с чего-то вкусного.</p>
+                        <p aria-hidden="true">как дома,<br>только вкуснее</p>
+                    </div>
+                </div>
+                <div id="hero-visual">
+                    <img id="hero-photo" src="img/hero.jpg" alt="Шакшука с томатами, яйцами и свежей зеленью в чёрной сковороде" width="1400" height="1400" fetchpriority="high">
+                    <p id="photo-label">С любовью к простым вещам</p>
+                    <p id="hero-caption">Шакшука — маленький повод проснуться</p>
+                    <button id="hero-switch" type="button" aria-label="Следующая фотография">01 / 02 →</button>
+                    <p aria-hidden="true" id="hero-stamp">GOOD FOOD<br>&amp;<br>GOOD MOOD</p>
+                </div>
+            </div>
+            <div aria-hidden="true" id="motto">
+                <p>Завтраки без повода</p>
+                ✳
+                <p>Кофе для настроения</p>
+                ✳
+                <p>Еда с теплом</p>
+                ✳
+                <p>Время для себя</p>
+            </div>
+            <div class="container" aria-labelledby="favorites-title" id="favorites">
+                <div class="heading">
+                    <div>
+                        <p class="eyebrow">Проверено хорошим настроением</p>
+                        <h2 id="favorites-title">Уже стали любимыми</h2>
+                    </div>
+                    <a href="menu.html">Всё меню ↗</a>
+                </div>
+                <div class="grid">
+                    <div class="card" data-dish="shakshuka" data-category="breakfast" data-price="490">
+                        <a href="product.html?id=shakshuka" aria-label="Подробнее: Шакшука">
+                            <img src="img/dishes/shakshuka.jpg" alt="Шакшука — пример подачи" width="1000" height="750" loading="lazy">
+                            <p>Хит завтраков</p>
+                        </a>
+                        <p>Завтраки · 320 г</p>
+                        <h3><a href="product.html?id=shakshuka">Шакшука</a></h3>
+                        <p>Яйца, томаты и пряности. С хлебом, чтобы собрать соус до последней капли.</p>
+                        <div class="actions">
+                            <p>490 ₽</p>
+                            <a href="product.html?id=shakshuka">Подробнее</a>
+                            <button type="button" data-add="shakshuka" aria-label="В корзину: Шакшука">В корзину</button>
+                        </div>
+                    </div>
+                    <div class="card" data-dish="salmon-breakfast" data-category="breakfast" data-price="650">
+                        <a href="product.html?id=salmon-breakfast" aria-label="Подробнее: Завтрак с лососем">
+                            <img src="img/dishes/salmon-breakfast.jpg" alt="Завтрак с лососем — пример подачи" width="1000" height="750" loading="lazy">
+                            <p>Любимый выбор</p>
+                        </a>
+                        <p>Завтраки · 300 г</p>
+                        <h3><a href="product.html?id=salmon-breakfast">Завтрак с лососем</a></h3>
+                        <p>Лосось, нежные яйца, авокадо и свежие овощи для неспешного утра.</p>
+                        <div class="actions">
+                            <p>650 ₽</p>
+                            <a href="product.html?id=salmon-breakfast">Подробнее</a>
+                            <button type="button" data-add="salmon-breakfast" aria-label="В корзину: Завтрак с лососем">В корзину</button>
+                        </div>
+                    </div>
+                    <div class="card" data-dish="cheesecake" data-category="desserts" data-price="350">
+                        <a href="product.html?id=cheesecake" aria-label="Подробнее: Сырный чизкейк">
+                            <img src="img/desserts/cheesecake.jpg" alt="Сырный чизкейк — пример подачи" width="1000" height="750" loading="lazy">
+                            <p>К кофе</p>
+                        </a>
+                        <p>Десерты · 150 г</p>
+                        <h3><a href="product.html?id=cheesecake">Сырный чизкейк</a></h3>
+                        <p>Сливочная текстура, рассыпчатая основа и то самое настроение «ещё кусочек».</p>
+                        <div class="actions">
+                            <p>350 ₽</p>
+                            <a href="product.html?id=cheesecake">Подробнее</a>
+                            <button type="button" data-add="cheesecake" aria-label="В корзину: Сырный чизкейк">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <p>Демонстрационные цены. Фотографии показывают примеры подачи.</p>
+            </div>
+            <div id="about">
+                <div class="container grid" id="about-layout">
+                    <img src="img/interior/cafe.jpg" alt="Уютный интерьер кафе с деревянной мебелью — атмосферная фотография Pexels" width="1000" height="1200" loading="lazy">
+                    <div>
+                        <p class="eyebrow">Просто будьте собой</p>
+                        <h2>В большом городе<br>нужно своё тёплое место.</h2>
+                        <p>NutsCafe — повод встретиться за завтраком, задержаться на чашку кофе и отложить дела ещё на пять минут.</p>
+                        <p>Этот учебный проект вдохновлён кафе на Кошурникова, 23/3. Мы собрали здесь знакомые названия блюд и атмосферу неспешных городских завтраков.</p>
+                        <ul id="values">
+                            <li>
+                                01
+                                <h3>С утра и с душой</h3>
+                                <p>Завтраки для тех, кто любит начинать день вкусно.</p>
+                            </li>
+                            <li>
+                                02
+                                <h3>Маленький ритуал</h3>
+                                <p>Ароматный кофе и десерт, который хочется разделить.</p>
+                            </li>
+                        </ul>
+                        <a href="menu.html">Найти своё любимое ↗</a>
+                    </div>
+                    <p id="about-caption">Атмосфера, которой мы вдохновляемся · Pexels</p>
+                </div>
+            </div>
+            <div id="delivery" class="container grid">
+                <div>
+                    <p class="eyebrow">Уют — там, где вы</p>
+                    <h2>Любимое кафе.<br>Теперь у вас дома.</h2>
+                    <p>Выберите блюда, соберите корзину и попробуйте оформить доставку в учебном интерфейсе.</p>
+                    <a class="button" href="menu.html">Собрать заказ ↗</a>
+                </div>
+                <div id="delivery-info">
+                    →
+                    <h3>Три зоны, всё понятно</h3>
+                    <p>От 199 ₽ за доставку.<br>Минимальный заказ — от 700 ₽.<br>Точная сумма зависит от выбранной зоны.</p>
+                    <p class="notice">Зоны, сроки и тарифы демонстрационные. Это не подтверждённые условия NutsCafe. Реальная доставка и оплата не выполняются.</p>
+                    <a href="cart.html">Посмотреть оформление ↗</a>
+                </div>
+            </div>
+            <div id="contacts">
+                <div class="container" id="contacts-layout">
+                    <div>
+                        <p class="eyebrow">Точка встречи</p>
+                        <h2>Встретимся в NutsCafe.</h2>
+                    </div>
+                    <div>
+                        <p>Новосибирск, ул. Кошурникова, 23/3</p>
+                        <p>Актуальные часы работы и телефон смотрите в карточке кафе.</p>
+                        <a href="https://2gis.ru/novosibirsk/firm/70000001066368854" target="_blank" rel="noopener noreferrer">Открыть 2ГИС ↗</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <select id="dish-library" hidden aria-label="Служебные сведения меню">
+            <option value="shakshuka" data-dish="shakshuka" data-price="490">Шакшука</option>
+            <option value="draniki" data-dish="draniki" data-price="390">Драники со сметаной</option>
+            <option value="salmon-breakfast" data-dish="salmon-breakfast" data-price="650">Завтрак с лососем</option>
+            <option value="meatballs" data-dish="meatballs" data-price="590">Митболы с картофельным пюре</option>
+            <option value="carbonara" data-dish="carbonara" data-price="550">Паста Карбонара</option>
+            <option value="caesar" data-dish="caesar" data-price="620">Цезарь с креветками</option>
+            <option value="chicken-bowl" data-dish="chicken-bowl" data-price="540">Боул с цыплёнком</option>
+            <option value="tom-yum" data-dish="tom-yum" data-price="690">Том ям с креветками</option>
+            <option value="borscht" data-dish="borscht" data-price="450">Борщ с говядиной</option>
+            <option value="cheesecake" data-dish="cheesecake" data-price="350">Сырный чизкейк</option>
+            <option value="cherry-pie" data-dish="cherry-pie" data-price="320">Вишнёвый пирог</option>
+            <option value="syrniki" data-dish="syrniki" data-price="430">Сырники с фундуком</option>
+            <option value="yogurt" data-dish="yogurt" data-price="360">Греческий йогурт с голубикой</option>
+            <option value="oatmeal" data-dish="oatmeal" data-price="310">Овсяная каша с ягодами</option>
+            <option value="waffle" data-dish="waffle" data-price="520">Вафля с беконом и скрэмблом</option>
+            <option value="cappuccino" data-dish="cappuccino" data-price="240">Капучино</option>
+        </select>
+        <footer>
+            <div class="container" id="footer-content">
+                <div>
+                    <a class="logo" href="index.html">nutsCafe</a>
+                    <p>Место для маленьких<br>удовольствий каждый день.</p>
+                </div>
+                <nav aria-label="Навигация в подвале">
+                    <a href="menu.html">Наше меню</a>
+                    <a href="index.html#delivery">Доставка</a>
+                    <a href="account.html">Личный кабинет</a>
+                </nav>
+                <div>
+                    <p class="eyebrow">Заглядывайте в гости</p>
+                    <p>Новосибирск<br>ул. Кошурникова, 23/3</p>
+                    <a href="https://2gis.ru/novosibirsk/firm/70000001066368854" target="_blank" rel="noopener noreferrer">Показать в 2ГИС ↗</a>
+                </div>
+                <div>
+                    <p class="eyebrow">О проекте</p>
+                    <p>Учебный демонстрационный сайт.<br>Заказы не передаются в кафе.<br>Цены, составы и тарифы — примеры.</p>
+                </div>
+            </div>
+            <div class="container" id="footer-bottom">
+                <p>© 2026 NutsCafe · Учебный проект</p>
+                <p>Миндулин Евгений Александрович</p>
+                <a href="README.md">О демонстрации ↗</a>
+            </div>
+        </footer>
+        <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    </body>
+</html>

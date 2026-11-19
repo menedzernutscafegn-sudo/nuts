@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="NutsCafe — учебный сайт кафе в Новосибирске. Меню, демонстрационная доставка и личный кабинет.">
+        <meta name="theme-color" content="#171512">
+        <title>Блюдо — NutsCafe</title>
+        <link rel="icon" href="img/logo.png" type="image/png">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js" defer></script>
+    </head>
+    <body data-page="product">
+        <a href="#main" id="skip-link">К содержимому</a>
+        <header>
+            <a class="logo" href="index.html" aria-label="nutsCafe — главная">nutsCafe</a>
+            <button type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav" id="menu-toggle"></button>
+            <nav id="main-nav" aria-label="Основная навигация">
+                <a href="menu.html">Меню</a>
+                <a href="index.html#about">О кафе</a>
+                <a href="index.html#delivery">Доставка</a>
+                <a href="index.html#contacts">Контакты</a>
+            </nav>
+            <a href="account.html" aria-label="Личный кабинет" id="account-link">
+                <img src="img/user.svg" alt="" width="22" height="22" aria-hidden="true">
+                Личный кабинет
+            </a>
+            <a href="cart.html" aria-label="Корзина" id="cart-link">
+                <img src="img/bag.svg" alt="" width="22" height="22" aria-hidden="true">
+                Корзина
+                <p data-cart-count>0</p>
+            </a>
+        </header>
+        <main id="main" class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a>
+                /
+                <a href="menu.html">Меню</a>
+                /
+                <p id="product-breadcrumb">Блюдо</p>
+            </div>
+            <div id="product-not-found" class="empty" hidden>
+                ?
+                <h1>Блюдо не найдено</h1>
+                <p>Возможно, в ссылке ошибка. Выберите что-нибудь вкусное в меню.</p>
+                <a class="button" href="menu.html">Вернуться в меню ↗</a>
+            </div>
+            <div data-dish="shakshuka" data-price="490" data-category="breakfast" hidden data-promo="Хит завтраков" data-product>
+                <div>
+                    <img src="img/dishes/shakshuka.jpg" alt="Шакшука — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Завтраки / 320 г</p>
+                    <h1>Шакшука</h1>
+                    <p data-description>Яйца, томаты и пряности. С хлебом, чтобы собрать соус до последней капли.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Томаты, яйца, сладкий перец, лук, чеснок, паприка, зелень, пшеничный хлеб.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Яйца, глютен.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>320 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>490 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Шакшука">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="shakshuka">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="draniki" data-price="390" data-category="breakfast" hidden data-product>
+                <div>
+                    <img src="img/dishes/draniki.jpg" alt="Драники со сметаной — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Завтраки / 250 г</p>
+                    <h1>Драники со сметаной</h1>
+                    <p data-description>Хрустящие снаружи, нежные внутри. Со сметаной и свежей зеленью.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Картофель, яйцо, пшеничная мука, лук, сметана, укроп.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Яйца, молоко, глютен.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>250 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>390 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Драники со сметаной">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="draniki">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="salmon-breakfast" data-price="650" data-category="breakfast" hidden data-promo="Любимый выбор" data-product>
+                <div>
+                    <img src="img/dishes/salmon-breakfast.jpg" alt="Завтрак с лососем — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Завтраки / 300 г</p>
+                    <h1>Завтрак с лососем</h1>
+                    <p data-description>Лосось, нежные яйца, авокадо и свежие овощи для неспешного утра.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Лосось слабосолёный, яйца, авокадо, томаты черри, салат, хлеб.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Рыба, яйца, глютен.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>300 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>650 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Завтрак с лососем">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="salmon-breakfast">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="meatballs" data-price="590" data-category="hot" hidden data-product>
+                <div>
+                    <img src="img/dishes/meatballs.jpg" alt="Митболы с картофельным пюре — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Горячие блюда / 350 г</p>
+                    <h1>Митболы с картофельным пюре</h1>
+                    <p data-description>Сочные мясные шарики на воздушном пюре. Просто, сытно, по-домашнему.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Говядина, свинина, картофель, молоко, сливочное масло, лук, зелень.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Молоко.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>350 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>590 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Митболы с картофельным пюре">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="meatballs">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="carbonara" data-price="550" data-category="hot" hidden data-product>
+                <div>
+                    <img src="img/dishes/carbonara.jpg" alt="Паста Карбонара — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Горячие блюда / 300 г</p>
+                    <h1>Паста Карбонара</h1>
+                    <p data-description>Паста с беконом, пармезаном и шелковистым соусом на желтках.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Паста из твёрдых сортов пшеницы, бекон, яичный желток, пармезан, чёрный перец.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Глютен, яйца, молоко.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>300 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>550 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Паста Карбонара">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="carbonara">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="caesar" data-price="620" data-category="salads" hidden data-product>
+                <div>
+                    <img src="img/dishes/caesar.jpg" alt="Цезарь с креветками — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Салаты / 260 г</p>
+                    <h1>Цезарь с креветками</h1>
+                    <p data-description>Хрустящий романо, креветки и пармезан с нашим прочтением классического соуса.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Креветки, салат романо, томаты черри, пармезан, сухарики, соус цезарь.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Ракообразные, молоко, яйца, рыба, глютен, горчица.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>260 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>620 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Цезарь с креветками">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="caesar">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="chicken-bowl" data-price="540" data-category="salads" hidden data-product>
+                <div>
+                    <img src="img/dishes/chicken-bowl.jpg" alt="Боул с цыплёнком — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Салаты / 300 г</p>
+                    <h1>Боул с цыплёнком</h1>
+                    <p data-description>Тёплый цыплёнок и свежие овощи в одной яркой, сбалансированной тарелке.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Филе цыплёнка, салат, огурец, томаты, авокадо, оливковое масло, лимон.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Возможны следы горчицы.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>300 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>540 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Боул с цыплёнком">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="chicken-bowl">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="tom-yum" data-price="690" data-category="soups" hidden data-promo="Пикантный" data-product>
+                <div>
+                    <img src="img/dishes/tom-yum.jpg" alt="Том ям с креветками — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Супы / 350 г</p>
+                    <h1>Том ям с креветками</h1>
+                    <p data-description>Пряный бульон, креветки, грибы и лайм. Маленькое путешествие за обедом.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Креветки, шампиньоны, томаты, кокосовое молоко, паста том ям, лайм, кинза, рыбный соус.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Ракообразные, рыба.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>350 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>690 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Том ям с креветками">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="tom-yum">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="borscht" data-price="450" data-category="soups" hidden data-product>
+                <div>
+                    <img src="img/dishes/borscht.jpg" alt="Борщ с говядиной — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Супы / 350 г</p>
+                    <h1>Борщ с говядиной</h1>
+                    <p data-description>Наваристый борщ со свёклой и говядиной, сметаной и ржаным хлебом.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Говядина, свёкла, капуста, картофель, морковь, лук, томат, сметана, ржаной хлеб.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Молоко, глютен.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>350 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>450 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Борщ с говядиной">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="borscht">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="cheesecake" data-price="350" data-category="desserts" hidden data-promo="К кофе" data-product>
+                <div>
+                    <img src="img/desserts/cheesecake.jpg" alt="Сырный чизкейк — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Десерты / 150 г</p>
+                    <h1>Сырный чизкейк</h1>
+                    <p data-description>Сливочная текстура, рассыпчатая основа и то самое настроение «ещё кусочек».</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Сливочный сыр, сливки, сахар, яйца, пшеничное печенье, сливочное масло, ягоды.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Молоко, яйца, глютен.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>150 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>350 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Сырный чизкейк">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="cheesecake">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="cherry-pie" data-price="320" data-category="desserts" hidden data-product>
+                <div>
+                    <img src="img/desserts/cherry-pie.jpg" alt="Вишнёвый пирог — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Десерты / 160 г</p>
+                    <h1>Вишнёвый пирог</h1>
+                    <p data-description>Тонкое тесто и щедрая вишнёвая начинка с лёгкой кислинкой.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Пшеничная мука, сливочное масло, яйца, вишня, сахар, крахмал.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Глютен, молоко, яйца.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>160 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>320 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Вишнёвый пирог">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="cherry-pie">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="syrniki" data-price="430" data-category="desserts" hidden data-product>
+                <div>
+                    <img src="img/desserts/syrniki.jpg" alt="Сырники с фундуком — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Десерты / 230 г</p>
+                    <h1>Сырники с фундуком</h1>
+                    <p data-description>Румяные творожные сырники со сметаной, ягодами и дроблёным фундуком.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Творог, яйца, пшеничная мука, сахар, сметана, ягоды, фундук.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Молоко, яйца, глютен, орехи.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>230 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>430 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Сырники с фундуком">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="syrniki">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="yogurt" data-price="360" data-category="breakfast" hidden data-product>
+                <div>
+                    <img src="img/desserts/yogurt.jpg" alt="Греческий йогурт с голубикой — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Завтраки / 200 г</p>
+                    <h1>Греческий йогурт с голубикой</h1>
+                    <p data-description>Густой натуральный йогурт с голубикой — лёгкое начало вашего дня.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Греческий йогурт, голубика, мёд.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Молоко.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>200 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>360 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Греческий йогурт с голубикой">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="yogurt">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="oatmeal" data-price="310" data-category="porridge" hidden data-product>
+                <div>
+                    <img src="img/dishes/oatmeal.jpg" alt="Овсяная каша с ягодами — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Каши / 280 г</p>
+                    <h1>Овсяная каша с ягодами</h1>
+                    <p data-description>Нежная молочная овсянка со свежими ягодами. Для самого уютного утра.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Овсяные хлопья, молоко, сливочное масло, малина, сахар.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Глютен, молоко.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>280 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>310 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Овсяная каша с ягодами">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="oatmeal">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="waffle" data-price="520" data-category="waffles" hidden data-product>
+                <div>
+                    <img src="img/dishes/waffle.jpg" alt="Вафля с беконом и скрэмблом — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Сэндвичи и вафли / 290 г</p>
+                    <h1>Вафля с беконом и скрэмблом</h1>
+                    <p data-description>Золотистая вафля, хрустящий бекон и мягкий скрэмбл. Завтрак с характером.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Пшеничная мука, яйца, молоко, сливочное масло, бекон, томаты.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Глютен, яйца, молоко.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>290 г</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>520 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Вафля с беконом и скрэмблом">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="waffle">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div data-dish="cappuccino" data-price="240" data-category="drinks" hidden data-product>
+                <div>
+                    <img src="img/drinks/cappuccino.jpg" alt="Капучино — пример подачи" width="1000" height="1000" loading="lazy">
+                    <p>Пример подачи · фотография Pexels</p>
+                </div>
+                <div>
+                    <p class="eyebrow">Напитки / 250 мл</p>
+                    <h1>Капучино</h1>
+                    <p data-description>Эспрессо и бархатистая молочная пена. Ничего лишнего, всё любимое.</p>
+                    <p>Готовим из знакомых ингредиентов, которые прекрасно дополняют друг друга. Блюдо для приятной паузы в середине дня.</p>
+                    <table aria-label="Состав, аллергены и размер порции">
+                        <tr>
+                            <th scope="row">Состав</th>
+                            <td>Эспрессо, молоко.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Аллергены</th>
+                            <td>Молоко.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Порция</th>
+                            <td>250 мл</td>
+                        </tr>
+                    </table>
+                    <p data-unit-price>240 ₽</p>
+                    <div class="quantity">
+                        <button type="button" data-product-step="-1" aria-label="Уменьшить количество">−</button>
+                        <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество порций: Капучино">
+                        <button type="button" data-product-step="1" aria-label="Увеличить количество">+</button>
+                    </div>
+                    <button class="button" type="button" data-add="cappuccino">В корзину +</button>
+                    <p>Демонстрационная цена, состав и вес. Условия реального кафе могут отличаться.</p>
+                    <a href="menu.html">← Вернуться в меню</a>
+                </div>
+            </div>
+            <div id="related-section" hidden>
+                <div class="heading">
+                    <div>
+                        <p class="eyebrow">Хорошая компания</p>
+                        <h2>Вам может понравиться</h2>
+                    </div>
+                    <a href="menu.html">Всё меню ↗</a>
+                </div>
+                <div id="related-dishes" class="grid"></div>
+            </div>
+        </main>
+        <footer>
+            <div class="container" id="footer-content">
+                <div>
+                    <a class="logo" href="index.html">nutsCafe</a>
+                    <p>Место для маленьких<br>удовольствий каждый день.</p>
+                </div>
+                <nav aria-label="Навигация в подвале">
+                    <a href="menu.html">Наше меню</a>
+                    <a href="index.html#delivery">Доставка</a>
+                    <a href="account.html">Личный кабинет</a>
+                </nav>
+                <div>
+                    <p class="eyebrow">Заглядывайте в гости</p>
+                    <p>Новосибирск<br>ул. Кошурникова, 23/3</p>
+                    <a href="https://2gis.ru/novosibirsk/firm/70000001066368854" target="_blank" rel="noopener noreferrer">Показать в 2ГИС ↗</a>
+                </div>
+                <div>
+                    <p class="eyebrow">О проекте</p>
+                    <p>Учебный демонстрационный сайт.<br>Заказы не передаются в кафе.<br>Цены, составы и тарифы — примеры.</p>
+                </div>
+            </div>
+            <div class="container" id="footer-bottom">
+                <p>© 2026 NutsCafe · Учебный проект</p>
+                <p>Миндулин Евгений Александрович</p>
+                <a href="README.md">О демонстрации ↗</a>
+            </div>
+        </footer>
+        <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    </body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="NutsCafe — учебный сайт кафе в Новосибирске. Меню, демонстрационная доставка и личный кабинет.">
+        <meta name="theme-color" content="#171512">
+        <title>Наше меню — NutsCafe</title>
+        <link rel="icon" href="img/logo.png" type="image/png">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js" defer></script>
+    </head>
+    <body data-page="menu">
+        <a href="#main" id="skip-link">К содержимому</a>
+        <header>
+            <a class="logo" href="index.html" aria-label="nutsCafe — главная">nutsCafe</a>
+            <button type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav" id="menu-toggle"></button>
+            <nav id="main-nav" aria-label="Основная навигация">
+                <a href="menu.html" aria-current="page">Меню</a>
+                <a href="index.html#about">О кафе</a>
+                <a href="index.html#delivery">Доставка</a>
+                <a href="index.html#contacts">Контакты</a>
+            </nav>
+            <a href="account.html" aria-label="Личный кабинет" id="account-link">
+                <img src="img/user.svg" alt="" width="22" height="22" aria-hidden="true">
+                Личный кабинет
+            </a>
+            <a href="cart.html" aria-label="Корзина" id="cart-link">
+                <img src="img/bag.svg" alt="" width="22" height="22" aria-hidden="true">
+                Корзина
+                <p data-cart-count>0</p>
+            </a>
+        </header>
+        <main id="main" class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a>
+                /
+                Меню
+            </div>
+            <div class="heading">
+                <div>
+                    <p class="eyebrow">Кухня хорошего настроения</p>
+                    <h1 id="menu-title">На любой вкус.<br>Для каждого момента.</h1>
+                </div>
+                <p>Начните с любимого.<br> А может, попробуйте что-то новое?<br>Все цены и составы демонстрационные.</p>
+            </div>
+            <div role="group" aria-label="Категории блюд" id="categories">
+                <button type="button" data-category-filter="all" aria-pressed="true">Всё меню</button>
+                <button type="button" data-category-filter="breakfast" aria-pressed="false">Завтраки</button>
+                <button type="button" data-category-filter="hot" aria-pressed="false">Горячие блюда</button>
+                <button type="button" data-category-filter="salads" aria-pressed="false">Салаты</button>
+                <button type="button" data-category-filter="soups" aria-pressed="false">Супы</button>
+                <button type="button" data-category-filter="desserts" aria-pressed="false">Десерты</button>
+                <button type="button" data-category-filter="porridge" aria-pressed="false">Каши</button>
+                <button type="button" data-category-filter="waffles" aria-pressed="false">Сэндвичи и вафли</button>
+                <button type="button" data-category-filter="drinks" aria-pressed="false">Напитки</button>
+            </div>
+            <div id="search-controls">
+                <input id="search" type="search" placeholder="Найти что-то вкусное" autocomplete="off" aria-label="Поиск по названию блюда" title="Найти что-то вкусное">
+                <select id="sort" aria-label="СортироватьПо умолчаниюСначала дешевлеСначала дороже">
+                    <option value="default">По умолчанию</option>
+                    <option value="asc">Сначала дешевле</option>
+                    <option value="desc">Сначала дороже</option>
+                </select>
+                <button id="reset-filters" type="button">Сбросить ↺</button>
+            </div>
+            <p id="results-count" role="status">16 блюд · выбирайте с удовольствием</p>
+            <div id="catalog" class="grid">
+                <div class="card" data-dish="shakshuka" data-category="breakfast" data-price="490">
+                    <a href="product.html?id=shakshuka" aria-label="Подробнее: Шакшука">
+                        <img src="img/dishes/shakshuka.jpg" alt="Шакшука — пример подачи" width="1000" height="750" loading="lazy">
+                        <p>Хит завтраков</p>
+                    </a>
+                    <p>Завтраки · 320 г</p>
+                    <h3><a href="product.html?id=shakshuka">Шакшука</a></h3>
+                    <p>Яйца, томаты и пряности. С хлебом, чтобы собрать соус до последней капли.</p>
+                    <div class="actions">
+                        <p>490 ₽</p>
+                        <a href="product.html?id=shakshuka">Подробнее</a>
+                        <button type="button" data-add="shakshuka" aria-label="В корзину: Шакшука">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="draniki" data-category="breakfast" data-price="390">
+                    <a href="product.html?id=draniki" aria-label="Подробнее: Драники со сметаной">
+                        <img src="img/dishes/draniki.jpg" alt="Драники со сметаной — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Завтраки · 250 г</p>
+                    <h3><a href="product.html?id=draniki">Драники со сметаной</a></h3>
+                    <p>Хрустящие снаружи, нежные внутри. Со сметаной и свежей зеленью.</p>
+                    <div class="actions">
+                        <p>390 ₽</p>
+                        <a href="product.html?id=draniki">Подробнее</a>
+                        <button type="button" data-add="draniki" aria-label="В корзину: Драники со сметаной">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="salmon-breakfast" data-category="breakfast" data-price="650">
+                    <a href="product.html?id=salmon-breakfast" aria-label="Подробнее: Завтрак с лососем">
+                        <img src="img/dishes/salmon-breakfast.jpg" alt="Завтрак с лососем — пример подачи" width="1000" height="750" loading="lazy">
+                        <p>Любимый выбор</p>
+                    </a>
+                    <p>Завтраки · 300 г</p>
+                    <h3><a href="product.html?id=salmon-breakfast">Завтрак с лососем</a></h3>
+                    <p>Лосось, нежные яйца, авокадо и свежие овощи для неспешного утра.</p>
+                    <div class="actions">
+                        <p>650 ₽</p>
+                        <a href="product.html?id=salmon-breakfast">Подробнее</a>
+                        <button type="button" data-add="salmon-breakfast" aria-label="В корзину: Завтрак с лососем">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="meatballs" data-category="hot" data-price="590">
+                    <a href="product.html?id=meatballs" aria-label="Подробнее: Митболы с картофельным пюре">
+                        <img src="img/dishes/meatballs.jpg" alt="Митболы с картофельным пюре — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Горячие блюда · 350 г</p>
+                    <h3><a href="product.html?id=meatballs">Митболы с картофельным пюре</a></h3>
+                    <p>Сочные мясные шарики на воздушном пюре. Просто, сытно, по-домашнему.</p>
+                    <div class="actions">
+                        <p>590 ₽</p>
+                        <a href="product.html?id=meatballs">Подробнее</a>
+                        <button type="button" data-add="meatballs" aria-label="В корзину: Митболы с картофельным пюре">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="carbonara" data-category="hot" data-price="550">
+                    <a href="product.html?id=carbonara" aria-label="Подробнее: Паста Карбонара">
+                        <img src="img/dishes/carbonara.jpg" alt="Паста Карбонара — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Горячие блюда · 300 г</p>
+                    <h3><a href="product.html?id=carbonara">Паста Карбонара</a></h3>
+                    <p>Паста с беконом, пармезаном и шелковистым соусом на желтках.</p>
+                    <div class="actions">
+                        <p>550 ₽</p>
+                        <a href="product.html?id=carbonara">Подробнее</a>
+                        <button type="button" data-add="carbonara" aria-label="В корзину: Паста Карбонара">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="caesar" data-category="salads" data-price="620">
+                    <a href="product.html?id=caesar" aria-label="Подробнее: Цезарь с креветками">
+                        <img src="img/dishes/caesar.jpg" alt="Цезарь с креветками — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Салаты · 260 г</p>
+                    <h3><a href="product.html?id=caesar">Цезарь с креветками</a></h3>
+                    <p>Хрустящий романо, креветки и пармезан с нашим прочтением классического соуса.</p>
+                    <div class="actions">
+                        <p>620 ₽</p>
+                        <a href="product.html?id=caesar">Подробнее</a>
+                        <button type="button" data-add="caesar" aria-label="В корзину: Цезарь с креветками">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="chicken-bowl" data-category="salads" data-price="540">
+                    <a href="product.html?id=chicken-bowl" aria-label="Подробнее: Боул с цыплёнком">
+                        <img src="img/dishes/chicken-bowl.jpg" alt="Боул с цыплёнком — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Салаты · 300 г</p>
+                    <h3><a href="product.html?id=chicken-bowl">Боул с цыплёнком</a></h3>
+                    <p>Тёплый цыплёнок и свежие овощи в одной яркой, сбалансированной тарелке.</p>
+                    <div class="actions">
+                        <p>540 ₽</p>
+                        <a href="product.html?id=chicken-bowl">Подробнее</a>
+                        <button type="button" data-add="chicken-bowl" aria-label="В корзину: Боул с цыплёнком">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="tom-yum" data-category="soups" data-price="690">
+                    <a href="product.html?id=tom-yum" aria-label="Подробнее: Том ям с креветками">
+                        <img src="img/dishes/tom-yum.jpg" alt="Том ям с креветками — пример подачи" width="1000" height="750" loading="lazy">
+                        <p>Пикантный</p>
+                    </a>
+                    <p>Супы · 350 г</p>
+                    <h3><a href="product.html?id=tom-yum">Том ям с креветками</a></h3>
+                    <p>Пряный бульон, креветки, грибы и лайм. Маленькое путешествие за обедом.</p>
+                    <div class="actions">
+                        <p>690 ₽</p>
+                        <a href="product.html?id=tom-yum">Подробнее</a>
+                        <button type="button" data-add="tom-yum" aria-label="В корзину: Том ям с креветками">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="borscht" data-category="soups" data-price="450">
+                    <a href="product.html?id=borscht" aria-label="Подробнее: Борщ с говядиной">
+                        <img src="img/dishes/borscht.jpg" alt="Борщ с говядиной — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Супы · 350 г</p>
+                    <h3><a href="product.html?id=borscht">Борщ с говядиной</a></h3>
+                    <p>Наваристый борщ со свёклой и говядиной, сметаной и ржаным хлебом.</p>
+                    <div class="actions">
+                        <p>450 ₽</p>
+                        <a href="product.html?id=borscht">Подробнее</a>
+                        <button type="button" data-add="borscht" aria-label="В корзину: Борщ с говядиной">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="cheesecake" data-category="desserts" data-price="350">
+                    <a href="product.html?id=cheesecake" aria-label="Подробнее: Сырный чизкейк">
+                        <img src="img/desserts/cheesecake.jpg" alt="Сырный чизкейк — пример подачи" width="1000" height="750" loading="lazy">
+                        <p>К кофе</p>
+                    </a>
+                    <p>Десерты · 150 г</p>
+                    <h3><a href="product.html?id=cheesecake">Сырный чизкейк</a></h3>
+                    <p>Сливочная текстура, рассыпчатая основа и то самое настроение «ещё кусочек».</p>
+                    <div class="actions">
+                        <p>350 ₽</p>
+                        <a href="product.html?id=cheesecake">Подробнее</a>
+                        <button type="button" data-add="cheesecake" aria-label="В корзину: Сырный чизкейк">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="cherry-pie" data-category="desserts" data-price="320">
+                    <a href="product.html?id=cherry-pie" aria-label="Подробнее: Вишнёвый пирог">
+                        <img src="img/desserts/cherry-pie.jpg" alt="Вишнёвый пирог — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Десерты · 160 г</p>
+                    <h3><a href="product.html?id=cherry-pie">Вишнёвый пирог</a></h3>
+                    <p>Тонкое тесто и щедрая вишнёвая начинка с лёгкой кислинкой.</p>
+                    <div class="actions">
+                        <p>320 ₽</p>
+                        <a href="product.html?id=cherry-pie">Подробнее</a>
+                        <button type="button" data-add="cherry-pie" aria-label="В корзину: Вишнёвый пирог">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="syrniki" data-category="desserts" data-price="430">
+                    <a href="product.html?id=syrniki" aria-label="Подробнее: Сырники с фундуком">
+                        <img src="img/desserts/syrniki.jpg" alt="Сырники с фундуком — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Десерты · 230 г</p>
+                    <h3><a href="product.html?id=syrniki">Сырники с фундуком</a></h3>
+                    <p>Румяные творожные сырники со сметаной, ягодами и дроблёным фундуком.</p>
+                    <div class="actions">
+                        <p>430 ₽</p>
+                        <a href="product.html?id=syrniki">Подробнее</a>
+                        <button type="button" data-add="syrniki" aria-label="В корзину: Сырники с фундуком">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="yogurt" data-category="breakfast" data-price="360">
+                    <a href="product.html?id=yogurt" aria-label="Подробнее: Греческий йогурт с голубикой">
+                        <img src="img/desserts/yogurt.jpg" alt="Греческий йогурт с голубикой — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Завтраки · 200 г</p>
+                    <h3><a href="product.html?id=yogurt">Греческий йогурт с голубикой</a></h3>
+                    <p>Густой натуральный йогурт с голубикой — лёгкое начало вашего дня.</p>
+                    <div class="actions">
+                        <p>360 ₽</p>
+                        <a href="product.html?id=yogurt">Подробнее</a>
+                        <button type="button" data-add="yogurt" aria-label="В корзину: Греческий йогурт с голубикой">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="oatmeal" data-category="porridge" data-price="310">
+                    <a href="product.html?id=oatmeal" aria-label="Подробнее: Овсяная каша с ягодами">
+                        <img src="img/dishes/oatmeal.jpg" alt="Овсяная каша с ягодами — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Каши · 280 г</p>
+                    <h3><a href="product.html?id=oatmeal">Овсяная каша с ягодами</a></h3>
+                    <p>Нежная молочная овсянка со свежими ягодами. Для самого уютного утра.</p>
+                    <div class="actions">
+                        <p>310 ₽</p>
+                        <a href="product.html?id=oatmeal">Подробнее</a>
+                        <button type="button" data-add="oatmeal" aria-label="В корзину: Овсяная каша с ягодами">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="waffle" data-category="waffles" data-price="520">
+                    <a href="product.html?id=waffle" aria-label="Подробнее: Вафля с беконом и скрэмблом">
+                        <img src="img/dishes/waffle.jpg" alt="Вафля с беконом и скрэмблом — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Сэндвичи и вафли · 290 г</p>
+                    <h3><a href="product.html?id=waffle">Вафля с беконом и скрэмблом</a></h3>
+                    <p>Золотистая вафля, хрустящий бекон и мягкий скрэмбл. Завтрак с характером.</p>
+                    <div class="actions">
+                        <p>520 ₽</p>
+                        <a href="product.html?id=waffle">Подробнее</a>
+                        <button type="button" data-add="waffle" aria-label="В корзину: Вафля с беконом и скрэмблом">В корзину</button>
+                    </div>
+                </div>
+                <div class="card" data-dish="cappuccino" data-category="drinks" data-price="240">
+                    <a href="product.html?id=cappuccino" aria-label="Подробнее: Капучино">
+                        <img src="img/drinks/cappuccino.jpg" alt="Капучино — пример подачи" width="1000" height="750" loading="lazy">
+                    </a>
+                    <p>Напитки · 250 мл</p>
+                    <h3><a href="product.html?id=cappuccino">Капучино</a></h3>
+                    <p>Эспрессо и бархатистая молочная пена. Ничего лишнего, всё любимое.</p>
+                    <div class="actions">
+                        <p>240 ₽</p>
+                        <a href="product.html?id=cappuccino">Подробнее</a>
+                        <button type="button" data-add="cappuccino" aria-label="В корзину: Капучино">В корзину</button>
+                    </div>
+                </div>
+            </div>
+            <div id="no-results" class="empty" hidden>
+                ⌕
+                <h2>Пока ничего не нашлось</h2>
+                <p>Попробуйте другое название или сбросьте фильтры.</p>
+                <button class="button" type="button" data-reset>Показать всё меню ↗</button>
+            </div>
+            <p>Фотографии Pexels показывают примеры подачи. Составы, вес и цены приведены для демонстрации.</p>
+        </main>
+        <footer>
+            <div class="container" id="footer-content">
+                <div>
+                    <a class="logo" href="index.html">nutsCafe</a>
+                    <p>Место для маленьких<br>удовольствий каждый день.</p>
+                </div>
+                <nav aria-label="Навигация в подвале">
+                    <a href="menu.html">Наше меню</a>
+                    <a href="index.html#delivery">Доставка</a>
+                    <a href="account.html">Личный кабинет</a>
+                </nav>
+                <div>
+                    <p class="eyebrow">Заглядывайте в гости</p>
+                    <p>Новосибирск<br>ул. Кошурникова, 23/3</p>
+                    <a href="https://2gis.ru/novosibirsk/firm/70000001066368854" target="_blank" rel="noopener noreferrer">Показать в 2ГИС ↗</a>
+                </div>
+                <div>
+                    <p class="eyebrow">О проекте</p>
+                    <p>Учебный демонстрационный сайт.<br>Заказы не передаются в кафе.<br>Цены, составы и тарифы — примеры.</p>
+                </div>
+            </div>
+            <div class="container" id="footer-bottom">
+                <p>© 2026 NutsCafe · Учебный проект</p>
+                <p>Миндулин Евгений Александрович</p>
+                <a href="README.md">О демонстрации ↗</a>
+            </div>
+        </footer>
+        <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="NutsCafe — учебный сайт кафе в Новосибирске. Меню, демонстрационная доставка и личный кабинет.">
+        <meta name="theme-color" content="#171512">
+        <title>Вход и регистрация — NutsCafe</title>
+        <link rel="icon" href="img/logo.png" type="image/png">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js" defer></script>
+    </head>
+    <body data-page="auth">
+        <a href="#main" id="skip-link">К содержимому</a>
+        <header>
+            <a class="logo" href="index.html" aria-label="nutsCafe — главная">nutsCafe</a>
+            <button type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav" id="menu-toggle"></button>
+            <nav id="main-nav" aria-label="Основная навигация">
+                <a href="menu.html">Меню</a>
+                <a href="index.html#about">О кафе</a>
+                <a href="index.html#delivery">Доставка</a>
+                <a href="index.html#contacts">Контакты</a>
+            </nav>
+            <a href="account.html" aria-label="Личный кабинет" id="account-link">
+                <img src="img/user.svg" alt="" width="22" height="22" aria-hidden="true">
+                Личный кабинет
+            </a>
+            <a href="cart.html" aria-label="Корзина" id="cart-link">
+                <img src="img/bag.svg" alt="" width="22" height="22" aria-hidden="true">
+                Корзина
+                <p data-cart-count>0</p>
+            </a>
+        </header>
+        <main id="main" class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a>
+                /
+                Вход и регистрация
+            </div>
+            <div class="grid" id="auth-layout">
+                <div id="auth-story">
+                    <p class="eyebrow">Рады видеть вас снова</p>
+                    <h1>Здесь вас<br> уже ждут.</h1>
+                    <p>Любимые завтраки, маленькие ритуалы<br>и место, где можно быть собой.</p>
+                    <div>
+                        <img src="img/drinks/cappuccino.jpg" alt="Капучино с узором на молочной пене в чёрной чашке" width="1000" height="750" loading="lazy">
+                        <p>Один кофе — и день уже лучше.</p>
+                    </div>
+                </div>
+                <div class="panel" aria-label="Демонстрационный вход" id="auth-panel">
+                    <div role="tablist" aria-label="Вход или регистрация" id="auth-tabs">
+                        <button id="login-tab" role="tab" type="button" aria-selected="true" aria-controls="login-panel">Вход</button>
+                        <button id="register-tab" role="tab" type="button" aria-selected="false" aria-controls="register-panel" tabindex="-1">Регистрация</button>
+                    </div>
+                    <div id="login-panel" role="tabpanel" aria-labelledby="login-tab">
+                        <h2>С возвращением</h2>
+                        <p>Попробуйте демонстрационный вход. Подойдёт любой корректный email или телефон и пароль от 8 символов.</p>
+                        <form id="login-form" method="post" action="auth.html" novalidate autocomplete="off" data-auth>
+                            <input id="login-identity" name="login-identity" type="text" required maxlength="100" placeholder="Электронная почта или телефон *" aria-describedby="login-identity-error" aria-label="Электронная почта или телефон *" title="hello@example.com или +7 999 123-45-67">
+                            <p id="login-identity-error" data-error-for="login-identity"></p>
+                            <input id="login-password" name="login-password" type="password" required minlength="8" maxlength="100" autocomplete="new-password" placeholder="Пароль *" aria-describedby="login-password-error" aria-label="Пароль *" title="Не менее 8 символов">
+                            <p id="login-password-error" data-error-for="login-password"></p>
+                            <button type="button" data-toggle-password="login-password" aria-pressed="false">Показать пароль</button>
+                            <p role="alert" hidden data-form-message></p>
+                            <button class="button" type="submit">Войти в деморежим ↗</button>
+                        </form>
+                    </div>
+                    <div id="register-panel" role="tabpanel" aria-labelledby="register-tab" hidden>
+                        <h2>Давайте знакомиться</h2>
+                        <p>Проверим форму на примере вымышленных данных. Учётная запись создана не будет.</p>
+                        <form id="register-form" method="post" action="auth.html" novalidate autocomplete="off" data-auth>
+                            <input id="register-name" name="register-name" type="text" required minlength="5" maxlength="100" placeholder="ФИО *" aria-describedby="register-name-error" aria-label="ФИО *" title="Иванов Иван Иванович">
+                            <p id="register-name-error" data-error-for="register-name"></p>
+                            <input id="register-phone" name="register-phone" type="tel" required maxlength="25" placeholder="Телефон *" aria-describedby="register-phone-error" aria-label="Телефон *" title="+7 (999) 123-45-67">
+                            <p id="register-phone-error" data-error-for="register-phone"></p>
+                            <input id="register-email" name="register-email" type="email" required maxlength="100" placeholder="Электронная почта *" aria-describedby="register-email-error" aria-label="Электронная почта *" title="hello@example.com">
+                            <p id="register-email-error" data-error-for="register-email"></p>
+                            <input id="register-password" name="register-password" type="password" required minlength="8" maxlength="100" autocomplete="new-password" placeholder="Пароль *" aria-describedby="register-password-error" aria-label="Пароль *" title="Не менее 8 символов">
+                            <p id="register-password-error" data-error-for="register-password"></p>
+                            <input id="register-confirm" name="register-confirm" type="password" required minlength="8" maxlength="100" autocomplete="new-password" placeholder="Повтор пароля *" aria-describedby="register-confirm-error" aria-label="Повтор пароля *" title="Повторите пароль">
+                            <p id="register-confirm-error" data-error-for="register-confirm"></p>
+                            <button type="button" data-toggle-password="register-password,register-confirm" aria-pressed="false">Показать пароли</button>
+                            <p role="alert" hidden data-form-message></p>
+                            <button class="button" type="submit">Проверить регистрацию ↗</button>
+                        </form>
+                    </div>
+                    <div id="auth-success" role="status" tabindex="-1" hidden>
+                        <h2>Проверка пройдена ✓</h2>
+                        <p>Данные корректны. Это демонстрация: аккаунт не создаётся, пароли и личные сведения не сохраняются.</p>
+                        <a class="button" href="account.html">Перейти в кабинет ↗</a>
+                    </div>
+                    <p class="notice">Это учебный интерфейс. Не вводите свой настоящий пароль. В кабинете отображаются заранее заданные вымышленные сведения.</p>
+                </div>
+            </div>
+        </main>
+        <select id="dish-library" hidden aria-label="Служебные сведения меню">
+            <option value="shakshuka" data-dish="shakshuka" data-price="490">Шакшука</option>
+            <option value="draniki" data-dish="draniki" data-price="390">Драники со сметаной</option>
+            <option value="salmon-breakfast" data-dish="salmon-breakfast" data-price="650">Завтрак с лососем</option>
+            <option value="meatballs" data-dish="meatballs" data-price="590">Митболы с картофельным пюре</option>
+            <option value="carbonara" data-dish="carbonara" data-price="550">Паста Карбонара</option>
+            <option value="caesar" data-dish="caesar" data-price="620">Цезарь с креветками</option>
+            <option value="chicken-bowl" data-dish="chicken-bowl" data-price="540">Боул с цыплёнком</option>
+            <option value="tom-yum" data-dish="tom-yum" data-price="690">Том ям с креветками</option>
+            <option value="borscht" data-dish="borscht" data-price="450">Борщ с говядиной</option>
+            <option value="cheesecake" data-dish="cheesecake" data-price="350">Сырный чизкейк</option>
+            <option value="cherry-pie" data-dish="cherry-pie" data-price="320">Вишнёвый пирог</option>
+            <option value="syrniki" data-dish="syrniki" data-price="430">Сырники с фундуком</option>
+            <option value="yogurt" data-dish="yogurt" data-price="360">Греческий йогурт с голубикой</option>
+            <option value="oatmeal" data-dish="oatmeal" data-price="310">Овсяная каша с ягодами</option>
+            <option value="waffle" data-dish="waffle" data-price="520">Вафля с беконом и скрэмблом</option>
+            <option value="cappuccino" data-dish="cappuccino" data-price="240">Капучино</option>
+        </select>
+        <footer>
+            <div class="container" id="footer-content">
+                <div>
+                    <a class="logo" href="index.html">nutsCafe</a>
+                    <p>Место для маленьких<br>удовольствий каждый день.</p>
+                </div>
+                <nav aria-label="Навигация в подвале">
+                    <a href="menu.html">Наше меню</a>
+                    <a href="index.html#delivery">Доставка</a>
+                    <a href="account.html">Личный кабинет</a>
+                </nav>
+                <div>
+                    <p class="eyebrow">Заглядывайте в гости</p>
+                    <p>Новосибирск<br>ул. Кошурникова, 23/3</p>
+                    <a href="https://2gis.ru/novosibirsk/firm/70000001066368854" target="_blank" rel="noopener noreferrer">Показать в 2ГИС ↗</a>
+                </div>
+                <div>
+                    <p class="eyebrow">О проекте</p>
+                    <p>Учебный демонстрационный сайт.<br>Заказы не передаются в кафе.<br>Цены, составы и тарифы — примеры.</p>
+                </div>
+            </div>
+            <div class="container" id="footer-bottom">
+                <p>© 2026 NutsCafe · Учебный проект</p>
+                <p>Миндулин Евгений Александрович</p>
+                <a href="README.md">О демонстрации ↗</a>
+            </div>
+        </footer>
+        <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    </body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="NutsCafe — учебный сайт кафе в Новосибирске. Меню, демонстрационная доставка и личный кабинет.">
+        <meta name="theme-color" content="#171512">
+        <title>Корзина и доставка — NutsCafe</title>
+        <link rel="icon" href="img/logo.png" type="image/png">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js" defer></script>
+    </head>
+    <body data-page="cart">
+        <a href="#main" id="skip-link">К содержимому</a>
+        <header>
+            <a class="logo" href="index.html" aria-label="nutsCafe — главная">nutsCafe</a>
+            <button type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav" id="menu-toggle"></button>
+            <nav id="main-nav" aria-label="Основная навигация">
+                <a href="menu.html">Меню</a>
+                <a href="index.html#about">О кафе</a>
+                <a href="index.html#delivery">Доставка</a>
+                <a href="index.html#contacts">Контакты</a>
+            </nav>
+            <a href="account.html" aria-label="Личный кабинет" id="account-link">
+                <img src="img/user.svg" alt="" width="22" height="22" aria-hidden="true">
+                Личный кабинет
+            </a>
+            <a href="cart.html" aria-label="Корзина" id="cart-link">
+                <img src="img/bag.svg" alt="" width="22" height="22" aria-hidden="true">
+                Корзина
+                <p data-cart-count>0</p>
+            </a>
+        </header>
+        <main id="main" class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a>
+                /
+                Корзина
+            </div>
+            <div class="heading">
+                <div>
+                    <p class="eyebrow">Осталось совсем немного</p>
+                    <h1>Ваш вкусный план.</h1>
+                </div>
+                <a href="menu.html">← Добавить что-нибудь ещё</a>
+            </div>
+            <div id="cart-empty" class="empty" hidden>
+                <img src="img/bag.svg" alt="" width="22" height="22" aria-hidden="true">
+                <h2>Здесь будет что-то вкусное</h2>
+                <p>Корзина пока пуста. Начнём с любимого завтрака?</p>
+                <a class="button" href="menu.html">Посмотреть меню ↗</a>
+            </div>
+            <div id="checkout-layout" hidden>
+                <div aria-labelledby="cart-title" id="cart-section">
+                    <div class="heading">
+                        <h2 id="cart-title">Вы выбрали</h2>
+                        <button id="clear-cart" type="button">Очистить корзину</button>
+                    </div>
+                    <div id="cart-items" aria-live="polite"></div>
+                    <div id="cart-subtotal">
+                        Стоимость блюд
+                        <p data-subtotal>0 ₽</p>
+                    </div>
+                    <p class="notice">Корзина переносится между страницами в ссылках. Если открыть сайт заново без параметра корзины, список будет пустым.</p>
+                </div>
+                <div class="panel" aria-labelledby="checkout-title" id="checkout-panel">
+                    <p class="eyebrow">Учебное оформление</p>
+                    <h2 id="checkout-title">Куда привезти уют?</h2>
+                    <p>Поля со звёздочкой обязательны. Используйте вымышленные данные: это демонстрация без реальной доставки.</p>
+                    <form id="checkout-form" method="post" action="cart.html" novalidate autocomplete="off">
+                        <h3>01 / Контактные данные</h3>
+                        <input id="recipient" name="recipient" type="text" required minlength="5" maxlength="100" placeholder="ФИО получателя *" aria-describedby="recipient-error" aria-label="ФИО получателя *" title="Иванов Иван Иванович">
+                        <p id="recipient-error" data-error-for="recipient"></p>
+                        <input id="phone" name="phone" type="tel" required placeholder="Телефон *" maxlength="25" inputmode="tel" aria-describedby="phone-error" aria-label="Телефон *" title="+7 (999) 123-45-67">
+                        <p id="phone-error" data-error-for="phone"></p>
+                        <h3>02 / Адрес доставки</h3>
+                        <select id="zone" name="zone" required aria-describedby="zone-error" aria-label="Зона доставки *">
+                            <option value="">Выберите зону</option>
+                            <option value="1" data-cost="199" data-min="700">Зона 1 · 199 ₽ · заказ от 700 ₽</option>
+                            <option value="2" data-cost="299" data-min="1000">Зона 2 · 299 ₽ · заказ от 1 000 ₽</option>
+                            <option value="3" data-cost="399" data-min="1500">Зона 3 · 399 ₽ · заказ от 1 500 ₽</option>
+                        </select>
+                        <p id="zone-error" data-error-for="zone"></p>
+                        <p class="notice">Демонстрационные зоны выбираются вручную и не связаны с районами города. Тарифы не являются условиями реальной доставки NutsCafe.</p>
+                        <input id="city" name="city" type="text" required readonly value="Новосибирск" aria-describedby="city-error" aria-label="Город *" placeholder="Город *">
+                        <p id="city-error" data-error-for="city"></p>
+                        <input id="district" name="district" type="text" required maxlength="80" placeholder="Район *" aria-describedby="district-error" aria-label="Район *" title="Например, Дзержинский">
+                        <p id="district-error" data-error-for="district"></p>
+                        <input id="street" name="street" type="text" required maxlength="100" placeholder="Улица *" aria-describedby="street-error" aria-label="Улица *" title="Название улицы">
+                        <p id="street-error" data-error-for="street"></p>
+                        <input id="house" name="house" type="text" required maxlength="15" placeholder="Дом *" aria-describedby="house-error" aria-label="Дом *" title="23/3">
+                        <p id="house-error" data-error-for="house"></p>
+                        <input id="apartment" name="apartment" type="text" maxlength="15" placeholder="Квартира / офис" aria-describedby="apartment-error" aria-label="Квартира / офис" title="12">
+                        <p id="apartment-error" data-error-for="apartment"></p>
+                        <input id="entrance" name="entrance" type="text" maxlength="10" placeholder="Подъезд" aria-describedby="entrance-error" aria-label="Подъезд" title="1">
+                        <p id="entrance-error" data-error-for="entrance"></p>
+                        <input id="floor" name="floor" type="text" maxlength="10" placeholder="Этаж" aria-describedby="floor-error" aria-label="Этаж" title="3">
+                        <p id="floor-error" data-error-for="floor"></p>
+                        <h3>03 / Время и оплата</h3>
+                        <select id="delivery-time" name="delivery-time" required aria-describedby="delivery-time-error" aria-label="Когда доставить *">
+                            <option value="soon">Как можно скорее</option>
+                            <option value="60">Через 60 минут</option>
+                            <option value="90">Через 90 минут</option>
+                            <option value="custom">Выбрать конкретное время</option>
+                        </select>
+                        <p id="delivery-time-error" data-error-for="delivery-time"></p>
+                        <div id="custom-time-field" hidden>
+                            <p>Сегодня, не раньше чем через 30 минут *</p>
+                            <input id="custom-time" name="custom-time" type="time" disabled aria-describedby="custom-time-error" aria-label="Сегодня, не раньше чем через 30 минут *">
+                            <p id="custom-time-error" data-error-for="custom-time"></p>
+                        </div>
+                        <select id="payment" name="payment" required aria-describedby="payment-error" aria-label="Способ оплаты *">
+                            <option value="cash">Наличными курьеру</option>
+                            <option value="card">Картой курьеру</option>
+                        </select>
+                        <p id="payment-error" data-error-for="payment"></p>
+                        <textarea id="comment" name="comment" rows="3" maxlength="500" placeholder="Комментарий курьеру" aria-label="Комментарий курьеру" title="Например, как найти подъезд"></textarea>
+                        <div id="order-total">
+                            <div>
+                                Блюда
+                                <p data-subtotal>0 ₽</p>
+                            </div>
+                            <div>
+                                Доставка
+                                <p id="delivery-cost">Выберите зону</p>
+                            </div>
+                            <div>
+                                <p>Итого</p>
+                                <p id="grand-total">0 ₽</p>
+                            </div>
+                        </div>
+                        <p id="minimum-warning" class="notice" role="status">Выберите зону для расчёта доставки.</p>
+                        <p id="checkout-error" role="alert" hidden data-form-message></p>
+                        <button class="button" type="submit">Оформить демозаказ ↗</button>
+                        <p>Заказ останется в этой вкладке. Данные не сохраняются и не передаются в кафе. Настоящая оплата не выполняется.</p>
+                    </form>
+                </div>
+            </div>
+            <div id="order-success" class="panel" tabindex="-1" hidden>
+                ✓
+                <p class="eyebrow">Сценарий пройден</p>
+                <h2>Всё получилось.<br>Ваш демозаказ оформлен.</h2>
+                <p>Это учебное подтверждение. Заказ не отправлен в кафе, курьер не назначен, оплата не списана.</p>
+                <div id="order-summary"></div>
+                <p>Информация видна только сейчас и исчезнет после обновления страницы.</p>
+                <div class="actions">
+                    <a class="button" href="menu.html">Вернуться в меню ↗</a>
+                    <a href="account.html">Демонстрационный кабинет ↗</a>
+                </div>
+            </div>
+            <template id="cart-templates">
+                <div data-dish="shakshuka" data-price="490">
+                    <a href="product.html?id=shakshuka">
+                        <img src="img/dishes/shakshuka.jpg" alt="Шакшука — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=shakshuka">Шакшука</a></h3>
+                    <p data-unit-price>490 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Шакшука">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Шакшука">+</button>
+                    </div>
+                    <button type="button" data-remove="shakshuka" aria-label="Удалить: Шакшука">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="draniki" data-price="390">
+                    <a href="product.html?id=draniki">
+                        <img src="img/dishes/draniki.jpg" alt="Драники со сметаной — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=draniki">Драники со сметаной</a></h3>
+                    <p data-unit-price>390 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Драники со сметаной">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Драники со сметаной">+</button>
+                    </div>
+                    <button type="button" data-remove="draniki" aria-label="Удалить: Драники со сметаной">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="salmon-breakfast" data-price="650">
+                    <a href="product.html?id=salmon-breakfast">
+                        <img src="img/dishes/salmon-breakfast.jpg" alt="Завтрак с лососем — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=salmon-breakfast">Завтрак с лососем</a></h3>
+                    <p data-unit-price>650 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Завтрак с лососем">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Завтрак с лососем">+</button>
+                    </div>
+                    <button type="button" data-remove="salmon-breakfast" aria-label="Удалить: Завтрак с лососем">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="meatballs" data-price="590">
+                    <a href="product.html?id=meatballs">
+                        <img src="img/dishes/meatballs.jpg" alt="Митболы с картофельным пюре — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=meatballs">Митболы с картофельным пюре</a></h3>
+                    <p data-unit-price>590 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Митболы с картофельным пюре">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Митболы с картофельным пюре">+</button>
+                    </div>
+                    <button type="button" data-remove="meatballs" aria-label="Удалить: Митболы с картофельным пюре">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="carbonara" data-price="550">
+                    <a href="product.html?id=carbonara">
+                        <img src="img/dishes/carbonara.jpg" alt="Паста Карбонара — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=carbonara">Паста Карбонара</a></h3>
+                    <p data-unit-price>550 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Паста Карбонара">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Паста Карбонара">+</button>
+                    </div>
+                    <button type="button" data-remove="carbonara" aria-label="Удалить: Паста Карбонара">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="caesar" data-price="620">
+                    <a href="product.html?id=caesar">
+                        <img src="img/dishes/caesar.jpg" alt="Цезарь с креветками — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=caesar">Цезарь с креветками</a></h3>
+                    <p data-unit-price>620 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Цезарь с креветками">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Цезарь с креветками">+</button>
+                    </div>
+                    <button type="button" data-remove="caesar" aria-label="Удалить: Цезарь с креветками">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="chicken-bowl" data-price="540">
+                    <a href="product.html?id=chicken-bowl">
+                        <img src="img/dishes/chicken-bowl.jpg" alt="Боул с цыплёнком — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=chicken-bowl">Боул с цыплёнком</a></h3>
+                    <p data-unit-price>540 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Боул с цыплёнком">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Боул с цыплёнком">+</button>
+                    </div>
+                    <button type="button" data-remove="chicken-bowl" aria-label="Удалить: Боул с цыплёнком">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="tom-yum" data-price="690">
+                    <a href="product.html?id=tom-yum">
+                        <img src="img/dishes/tom-yum.jpg" alt="Том ям с креветками — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=tom-yum">Том ям с креветками</a></h3>
+                    <p data-unit-price>690 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Том ям с креветками">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Том ям с креветками">+</button>
+                    </div>
+                    <button type="button" data-remove="tom-yum" aria-label="Удалить: Том ям с креветками">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="borscht" data-price="450">
+                    <a href="product.html?id=borscht">
+                        <img src="img/dishes/borscht.jpg" alt="Борщ с говядиной — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=borscht">Борщ с говядиной</a></h3>
+                    <p data-unit-price>450 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Борщ с говядиной">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Борщ с говядиной">+</button>
+                    </div>
+                    <button type="button" data-remove="borscht" aria-label="Удалить: Борщ с говядиной">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="cheesecake" data-price="350">
+                    <a href="product.html?id=cheesecake">
+                        <img src="img/desserts/cheesecake.jpg" alt="Сырный чизкейк — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=cheesecake">Сырный чизкейк</a></h3>
+                    <p data-unit-price>350 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Сырный чизкейк">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Сырный чизкейк">+</button>
+                    </div>
+                    <button type="button" data-remove="cheesecake" aria-label="Удалить: Сырный чизкейк">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="cherry-pie" data-price="320">
+                    <a href="product.html?id=cherry-pie">
+                        <img src="img/desserts/cherry-pie.jpg" alt="Вишнёвый пирог — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=cherry-pie">Вишнёвый пирог</a></h3>
+                    <p data-unit-price>320 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Вишнёвый пирог">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Вишнёвый пирог">+</button>
+                    </div>
+                    <button type="button" data-remove="cherry-pie" aria-label="Удалить: Вишнёвый пирог">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="syrniki" data-price="430">
+                    <a href="product.html?id=syrniki">
+                        <img src="img/desserts/syrniki.jpg" alt="Сырники с фундуком — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=syrniki">Сырники с фундуком</a></h3>
+                    <p data-unit-price>430 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Сырники с фундуком">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Сырники с фундуком">+</button>
+                    </div>
+                    <button type="button" data-remove="syrniki" aria-label="Удалить: Сырники с фундуком">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="yogurt" data-price="360">
+                    <a href="product.html?id=yogurt">
+                        <img src="img/desserts/yogurt.jpg" alt="Греческий йогурт с голубикой — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=yogurt">Греческий йогурт с голубикой</a></h3>
+                    <p data-unit-price>360 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Греческий йогурт с голубикой">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Греческий йогурт с голубикой">+</button>
+                    </div>
+                    <button type="button" data-remove="yogurt" aria-label="Удалить: Греческий йогурт с голубикой">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="oatmeal" data-price="310">
+                    <a href="product.html?id=oatmeal">
+                        <img src="img/dishes/oatmeal.jpg" alt="Овсяная каша с ягодами — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=oatmeal">Овсяная каша с ягодами</a></h3>
+                    <p data-unit-price>310 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Овсяная каша с ягодами">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Овсяная каша с ягодами">+</button>
+                    </div>
+                    <button type="button" data-remove="oatmeal" aria-label="Удалить: Овсяная каша с ягодами">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="waffle" data-price="520">
+                    <a href="product.html?id=waffle">
+                        <img src="img/dishes/waffle.jpg" alt="Вафля с беконом и скрэмблом — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=waffle">Вафля с беконом и скрэмблом</a></h3>
+                    <p data-unit-price>520 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Вафля с беконом и скрэмблом">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Вафля с беконом и скрэмблом">+</button>
+                    </div>
+                    <button type="button" data-remove="waffle" aria-label="Удалить: Вафля с беконом и скрэмблом">×</button>
+                    <p data-item-total></p>
+                </div>
+                <div data-dish="cappuccino" data-price="240">
+                    <a href="product.html?id=cappuccino">
+                        <img src="img/drinks/cappuccino.jpg" alt="Капучино — пример подачи" width="120" height="120">
+                    </a>
+                    <h3><a href="product.html?id=cappuccino">Капучино</a></h3>
+                    <p data-unit-price>240 ₽ / порция</p>
+                    <div class="quantity">
+                        <button type="button" data-cart-step="-1" aria-label="Уменьшить количество: Капучино">−</button>
+                        <p aria-label="Количество порций" data-quantity></p>
+                        <button type="button" data-cart-step="1" aria-label="Увеличить количество: Капучино">+</button>
+                    </div>
+                    <button type="button" data-remove="cappuccino" aria-label="Удалить: Капучино">×</button>
+                    <p data-item-total></p>
+                </div>
+            </template>
+        </main>
+        <footer>
+            <div class="container" id="footer-content">
+                <div>
+                    <a class="logo" href="index.html">nutsCafe</a>
+                    <p>Место для маленьких<br>удовольствий каждый день.</p>
+                </div>
+                <nav aria-label="Навигация в подвале">
+                    <a href="menu.html">Наше меню</a>
+                    <a href="index.html#delivery">Доставка</a>
+                    <a href="account.html">Личный кабинет</a>
+                </nav>
+                <div>
+                    <p class="eyebrow">Заглядывайте в гости</p>
+                    <p>Новосибирск<br>ул. Кошурникова, 23/3</p>
+                    <a href="https://2gis.ru/novosibirsk/firm/70000001066368854" target="_blank" rel="noopener noreferrer">Показать в 2ГИС ↗</a>
+                </div>
+                <div>
+                    <p class="eyebrow">О проекте</p>
+                    <p>Учебный демонстрационный сайт.<br>Заказы не передаются в кафе.<br>Цены, составы и тарифы — примеры.</p>
+                </div>
+            </div>
+            <div class="container" id="footer-bottom">
+                <p>© 2026 NutsCafe · Учебный проект</p>
+                <p>Миндулин Евгений Александрович</p>
+                <a href="README.md">О демонстрации ↗</a>
+            </div>
+        </footer>
+        <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    </body>
+</html>
